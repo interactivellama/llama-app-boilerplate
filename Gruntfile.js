@@ -26,7 +26,7 @@ module.exports = function (grunt) {
 				tasks: ['coffee']
 			},
 			less: {
-				files: ['<%= yeoman.app %>/public/less/{,*/}*.less'],
+				files: ['<%= yeoman.app %>/css/{,*/}*.less'],
 				tasks: ['less']
 			},
 			gruntfile: {
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
 					port: 9001,
 					base: [
 						'.tmp',
-						'test',
+						'test/browser',
 						'<%= yeoman.app %>'
 					]
 				}
@@ -92,7 +92,8 @@ module.exports = function (grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
-				reporter: require('jshint-stylish')
+				reporter: require('jshint-stylish'),
+				force: true
 			},
 			all: [
 				'Gruntfile.js',
@@ -105,7 +106,7 @@ module.exports = function (grunt) {
 			all: {
 				options: {
 					run: true,
-					urls: ['http://localhost:<%= connect.options.port %>/index.html']
+					urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
 				}
 			}
 		},
@@ -123,11 +124,11 @@ module.exports = function (grunt) {
 		less: {
 			dist: {
 				files: {
-					'<%= yeoman.app %>/public/css/main.css': ['<%= yeoman.app %>/public/less/main.less']
+					'<%= yeoman.app %>/css/main.css': ['<%= yeoman.app %>/css/main.less']
 				},
 				options: {
 					sourceMap: true,
-					sourceMapFilename: '<%= yeoman.app %>/public/css/main.css.map',
+					sourceMapFilename: '<%= yeoman.app %>/css/main.css.map',
 					sourceMapBasepath: '<%= yeoman.app %>/',
 					sourceMapRootpath: '/'
 				}
