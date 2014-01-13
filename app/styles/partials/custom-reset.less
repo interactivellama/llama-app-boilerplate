@@ -1,4 +1,6 @@
-@import "../vendor/3L/3L.less";	
+#3L {
+  @import "../../bower_components/3l/3L/3L.less";
+}
 
 /*------------------------------------------  
 =RESET
@@ -72,11 +74,11 @@ address {
 
 // add transition to buttons and input fields
 input, button {	
-  #3L.transition('background-color', .5s, ease);
+  // #3L.transition('background-color', .5s, ease);
   
-  .no-touch &:hover, .no-touch &:hover:visited {
-  	#3L.transition('background-color', .5s, ease);
-  }
+  // .no-touch &:hover, .no-touch &:hover:visited {
+  // 	#3L.transition('background-color', .5s, ease);
+  // }
 }
 
 
