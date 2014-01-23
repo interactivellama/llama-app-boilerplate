@@ -21,13 +21,13 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		yeoman: yeomanConfig,
 		watch: {
-			coffee: {
-				files: ['<%= yeoman.app %>/public/scripts/{,*/}*.coffee'],
-				tasks: ['coffee']
-			},
 			less: {
 				files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
 				tasks: ['less']
+			},
+			sass: {
+				files: ['<%= yeoman.app %>/styles/{,*/}*.scss'],
+				tasks: ['sass']
 			},
 			gruntfile: {
 				files: ['Gruntfile.js']
@@ -37,8 +37,9 @@ module.exports = function (grunt) {
 					livereload: '<%= connect.options.livereload %>'
 				},
 				files: [
-					'<%= yeoman.app %>/*.html',
+					'<%= yeoman.app %>/{,*/}*.html',
 					'{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+					'{.tmp,<%= yeoman.app %>}/styles/scss/css/{,*/}*.css',
 					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
 					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 				]
@@ -110,21 +111,11 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		coffee: {
-			dist: {
-				files: [{
-					expand: true,
-					cwd: '<%= yeoman.app %>/js',
-					src: '{,*/}*.coffee',
-					dest: '<%= yeoman.app %>/js',
-					ext: '.js'
-				}]
-			}
-		},
 		less: {
 			dist: {
 				files: {
-					'<%= yeoman.app %>/styles/main.css': ['<%= yeoman.app %>/styles/main.less']
+					'<%= yeoman.app %>/styles/main.css': ['<%= yeoman.app %>/styles/main.less'],
+					'<%= yeoman.app %>/styles/stephen.css': ['<%= yeoman.app %>/styles/stephen.less']
 				},
 				options: {
 					sourceMap: true,
@@ -134,6 +125,16 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		sass: {
+		      dist: {
+		        options: {
+		        	style: 'expanded'
+		        },
+		        files: {
+		          '<%= yeoman.app %>/styles/main-sass.css': '<%= yeoman.app %>/styles/scss/main-sass.scss'
+		        }
+		      }
+		    },
 		// not used since Uglify task does concat,
 		// but still available if needed
 		/*concat: {
@@ -254,7 +255,6 @@ module.exports = function (grunt) {
 		},
 		concurrent: {
 			dist: [
-				'coffee',
 				'less',
 				'imagemin',
 				'svgmin',
@@ -270,8 +270,8 @@ module.exports = function (grunt) {
 
 		grunt.task.run([
 			'clean:server',
-			'coffee',
 			'less',
+			'sass',
 			'copy:server',
 			'connect:livereload',
 			'watch'
@@ -285,7 +285,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test', [
 		'clean:server',
-		'coffee',
 		'less',
 		'copy:server',
 		'connect:test',
