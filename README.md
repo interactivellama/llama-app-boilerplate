@@ -1,7 +1,7 @@
 Llama Front-End Boilerplate
 =================
 
-A single page application boilerplate with Backbone, Grunt, Bower components, and node modules to name a few things.
+A single page application boilerplate with Backbone, Grunt, Bower components (Bootstrap 2.5, FuelUX), and node modules to name a few things.
 
 The first thing you'll want to do is remove `bower_components` and `node_modules` folders from your `.gitignore`. Then run `npm install` and `bower install` to install dependencies below.
 
