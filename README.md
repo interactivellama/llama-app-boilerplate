@@ -5,6 +5,8 @@ A single page application boilerplate with Backbone, Grunt, Bower components, an
 
 The first thing you'll want to do is remove `bower_components` and `node_modules` folders from your `.gitignore`. Then run `npm install` and `bower install` to install dependencies below.
 
+Then, `grunt serve` to create a node connect server on port 9000.
+
 ##Bower Components
 * 3l
 * backbone
