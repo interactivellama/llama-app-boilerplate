@@ -1,16 +1,25 @@
 Llama Front-End Boilerplate
 =================
 
-A front-end development boilerplate with Grunt, Bower components, node modules.
+A single page application boilerplate with Backbone, Grunt, Bower components, and node modules to name a few things.
+
+The first thing you'll want to do is remove `bower_components` and `node_modules` folders from your `.gitignore`. Then run `npm install` and `bower install` to install dependencies below.
 
 ##Bower Components
+* 3l
+* backbone
+* backbone.babysitter
+* backbone.marionette
+* backbone.wreqr
 * bootstrap
 * chai
+* fuelux
 * jquery
 * mocha
 * modernizr
 * requirejs
 * sinon
+* underscore
 
 ##Node Modules
 * express
@@ -25,6 +34,7 @@ A front-end development boilerplate with Grunt, Bower components, node modules.
 * grunt-contrib-htmlmin
 * grunt-contrib-jshint
 * grunt-contrib-less
+* grunt-contrib-sass
 * grunt-contrib-uglify
 * grunt-contrib-watch
 * grunt-jsvalidate
